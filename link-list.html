@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        class linklist {
+
+            constructor(data) {
+
+                this.head = {
+
+                    data: data,
+                    next: null
+
+                }
+
+                this.tail = this.head
+                this.size = 1
+
+            }
+
+            push(data) {
+
+                let newnode = {
+
+                    data: data,
+                    next: null
+
+                }
+
+                this.tail.next = newnode
+                this.tail = newnode
+                this.size += 1
+
+            }
+
+            Remove(index) {
+
+                let count = 1
+
+
+                let current = this.head
+                if (index === 1) {
+
+                    console.log("Head Node can not Remove");
+
+                }
+                else {
+
+                    while (count < index - 1) {
+
+                        current = current.next
+                        count++
+
+                    }
+                    
+                    let nextnode = current.next.next
+                    current.next = nextnode
+                    this.size = this.size - 1
+
+                }
+
+            }
+
+            Reverse() {
+
+                let preview = null
+
+                let current = this.head
+
+                let next = null
+
+                while (current != null) {
+
+                    next = current.next
+                    current.next = preview
+                    preview = current
+                    current = next
+
+                }
+
+                this.tail = this.head
+
+                this.head = preview
+
+            }
+
+            print() {
+
+                let count = 0
+                let current = this.head
+                while (count < this.size) {
+
+                    console.log(current);
+
+                    current = current.next
+                    count++
+
+                }
+
+            }
+
+        }
+
+        let list = new linklist(2)
+        list.push(4)
+        list.push(9)
+        list.push(8)
+        list.push(1)
+        list.push(51)
+        console.log(list);
+
+        list.print()
+
+        list.Remove(3)
+
+        console.log(list);
+
+        list.Reverse()
+
+        console.log(list);
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
